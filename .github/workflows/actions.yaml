@@ -11,7 +11,7 @@ jobs:
       - name: List Files
         run: |
           pwd
-          ls
+          ls -a
       - name: Simple JS Action
         id: greet
         # better to choose a specific version or commit will ensure consistency
@@ -19,6 +19,8 @@ jobs:
         with:
           who-to-greet: Johnny
       - name: Save state
-        run: echo "{time}=$time" >> $GITHUB_ENV 
+        run: |
+          time=${{ steps.greet.outputs.time }}
+          echo "{time}=$time" >> $GITHUB_ENV 
       - name: Log Greeting Time
         run: echo ${{ env.time }}
