@@ -20,7 +20,6 @@ jobs:
           who-to-greet: Johnny
       - name: Save state
         run: |
-          time=${{ steps.greet.outputs.time }}
-          echo "{time}=$time" >> $GITHUB_ENV 
+          echo "{time}=${{ steps.greet.outputs.time }}" >> $GITHUB_ENV 
       - name: Log Greeting Time
         run: echo ${{ env.time }}
