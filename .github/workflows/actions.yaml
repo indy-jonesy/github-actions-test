@@ -6,6 +6,8 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: List Files
         run: |
           pwd
@@ -16,5 +18,7 @@ jobs:
         uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
         with:
           who-to-greet: Johnny
-      - name: Log greeting Time
-        run: echo "${{ steps.greet.outputs.time }}"
+      - name: Save state
+        run: echo "{time}=$time" >> $GITHUB_ENV 
+      - name: Log Greeting Time
+        run: echo ${{ env.time }}
