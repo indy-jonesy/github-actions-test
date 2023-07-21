@@ -16,12 +16,15 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: payload
+        run: echo ${{ github.event.client_payload.env }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: List Files
         run: |
           pwd
           ls -a
+      # echo "${{ github.token }}"
       - name: Simple JS Action
         id: greet
         # better to choose a specific version or commit will ensure consistency
