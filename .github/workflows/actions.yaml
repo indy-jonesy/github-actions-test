@@ -1,8 +1,10 @@
 name: Actions Workflow
 
 on:
+  # https://api.github.com/repos/indy-jonesy/github-actions-test/dispatches
   repository_dispatch:
-
+    types: 
+      - builder
   # schedule:
   #   - cron: "*/5 * * * *"
   #   - cron: "*/6 * * * *"
