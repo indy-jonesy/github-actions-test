@@ -2,15 +2,28 @@ name: Actions Workflow
 
 on:
   # https://api.github.com/repos/indy-jonesy/github-actions-test/dispatches
-  repository_dispatch:
-    types: 
-      - builder
+  # repository_dispatch:
+  #   types: 
+  #     - builder
   # schedule:
   #   - cron: "*/5 * * * *"
   #   - cron: "*/6 * * * *"
-  # push:
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+  push:
+    branches:
+      - master
+      - 'feature/*' # matches anything with a prefix of feature
+      - '!feature/featC' # ignores the specific branch
+    tags:
+      - v1
+    paths:
+      - '**.js'
+      # only can use one or the other
+    # tags-ignore:
+    #   - you get the idea
+    # branches-ignore:
+    #   - load_test
+  # pull_request:
+  #   types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:
