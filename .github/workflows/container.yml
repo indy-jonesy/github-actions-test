@@ -3,6 +3,24 @@ name: Container
 on: push
 
 jobs:
+
+  docker-steps:
+    runs-on: ubuntu-latest
+    container:
+      image: node:16-bullseye-slim
+    steps:
+      - name: log node version
+        run: node -v
+      - name: Step with Docker
+        uses: docker://node:20-slim
+        with:
+          entrypoint: /bin/echo
+          args: Hello World
+      - name: Step with Docker
+        uses: docker://node:20-slim
+        with:
+          entrypoint: /usr/local/bin/node
+          args: -v
   node-docker:
     runs-on: ubuntu-latest
     services:
