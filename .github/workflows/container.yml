@@ -25,6 +25,7 @@ jobs:
       - name: Run a script
         uses: docker://node:20-slim
         with:
+          # you have to run chmod -x my_file_name to do this
           entrypoint: ./script.sh
           args: Some string
   node-docker:
