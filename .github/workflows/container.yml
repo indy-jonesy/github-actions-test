@@ -25,7 +25,10 @@ jobs:
       - name: Run a script
         uses: docker://node:20-slim
         with:
-          # you have to run chmod -x my_file_name to do this
+          # you have to run git update-index --chmod=+x script.sh to do this
+          # links
+          # https://aileenrae.co.uk/blog/github-actions-shell-script-permission-denied-error/
+          # https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action#writing-the-action-code
           entrypoint: ./script.sh
           args: Some string
   node-docker:
